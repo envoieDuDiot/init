@@ -1,0 +1,18 @@
+/* 1rst create a md5 file */
+
+sudo md5sum /etc/crontab >> crontab.txt
+
+_______________________
+
+/* create a script called "script.sh" that compares the files and send a notification if needed "
+
+if [[ $(md5sum ~/crontab.txt | cut -d' ' -f1) == $(md5sum /etc/crontab | cut -d' ' -f1) ]]
+then
+      mail -s "/etc/crontab has been modified" root@127.0.0.1 < /dev/null
+fi
+
+_______________________
+
+
+/* create a planned task to launch the script everyday on 00h00 */
+echo '00 00 * * * root sh ~/script.sh' | crontab

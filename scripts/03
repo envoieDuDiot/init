@@ -1,0 +1,2 @@
+/* list only files, not repository */
+ls -lA $1 | grep '^[-l]'

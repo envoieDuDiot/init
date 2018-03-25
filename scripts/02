@@ -1,0 +1,5 @@
+/* to create the script */
+echo 'sudo apt update -y && sudo apt upgrade -y >> /var/log/update_script.log' >> ~/updating_script.sh
+
+/* to launch the script */
+echo '00 04 * * 1 root sh ~/apt_update.sh' | crontab
